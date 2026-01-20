@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:clean_app/core/api/api_endpoints.dart';
 import 'package:clean_app/core/errors/exceptions.dart';
 import 'package:clean_app/core/utils/strings.dart';

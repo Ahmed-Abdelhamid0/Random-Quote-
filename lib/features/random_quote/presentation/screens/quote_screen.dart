@@ -2,11 +2,9 @@ import 'package:clean_app/core/utils/colors.dart';
 import 'package:clean_app/core/utils/strings.dart';
 import 'package:clean_app/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:clean_app/features/random_quote/presentation/widgets/quote_content.dart';
-import 'package:clean_app/features/random_quote/presentation/widgets/refresh_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clean_app/core/widgets/error_widget.dart' as error_widget;
-
 
 class QuoteScreen extends StatefulWidget {
   const QuoteScreen({super.key});
@@ -16,8 +14,7 @@ class QuoteScreen extends StatefulWidget {
 }
 
 class _QuoteScreenState extends State<QuoteScreen> {
-
-  // ToDo : get data from api 
+  // ToDo : get data from api
   getRandomQuoteFromAPI() =>
       BlocProvider.of<RandomQuoteCubit>(context).getRandomQuote();
 
@@ -36,22 +33,37 @@ class _QuoteScreenState extends State<QuoteScreen> {
         body: BlocBuilder<RandomQuoteCubit, RandomQuoteState>(
           builder: (context, state) {
             if (state is RandomQuoteisLoading) {
-              return Center(child: CircularProgressIndicator(
-                color: AppColors.primary,
-              ));
+              return Center(
+                child: CircularProgressIndicator(color: AppColors.primary),
+              );
             } else if (state is RandomQuoteisError) {
               return error_widget.ErrorWidget();
             } else if (state is RandomQuoteisLoaded) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   QuoteContent(quote: state.quote),
-                  RefreshIcon(),
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          getRandomQuoteFromAPI();
+                        },
+                        icon: Icon(Icons.refresh, color: Colors.white, size: 27),
+                      ),
+                    ),
+                  ),
                 ],
               );
             } else {
-              return Center(child: CircularProgressIndicator(
-                color: AppColors.red,
-              ),);
+              return Center(
+                child: CircularProgressIndicator(color: AppColors.red),
+              );
             }
           },
         ),
