@@ -6,7 +6,7 @@ ThemeData appTheme(){
   return ThemeData(
     primaryColor: AppColors.primary,
     highlightColor: AppColors.hint,
-    scaffoldBackgroundColor: Colors.grey[500],
+    scaffoldBackgroundColor: Colors.white,
     fontFamily: AppStrings.fontFamilyTajawal,
     appBarTheme: AppBarThemeData(
       backgroundColor: Colors.black,

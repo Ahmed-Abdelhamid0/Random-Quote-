@@ -34,7 +34,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
           builder: (context, state) {
             if (state is RandomQuoteisLoading) {
               return Center(
-                child: CircularProgressIndicator(color: AppColors.primary),
+                child: CircularProgressIndicator(color: AppColors.black),
               );
             } else if (state is RandomQuoteisError) {
               return error_widget.ErrorWidget();
@@ -62,7 +62,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
               );
             } else {
               return Center(
-                child: CircularProgressIndicator(color: AppColors.red),
+                child: CircularProgressIndicator(color: AppColors.black),
               );
             }
           },

@@ -18,10 +18,10 @@ class QuoteContent extends StatelessWidget {
         children: [
           Text(quote.quoteText,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white,height: 2,fontSize: 15)),
+          style: TextStyle(color: Colors.white,height: 1.5,fontSize: 23)),
        Container(
         margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-        child: Text(quote.author,style: TextStyle(color: Colors.white,fontSize: 20),),
+        child: Text(quote.author,style: TextStyle(color: Colors.redAccent,fontSize: 20),),
       )
         ],
       ),
